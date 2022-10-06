@@ -1,3 +1,3 @@
 module.exports = {
-  sayHi: alert("hi")
+  sayHi: console.log("hi")
 }
