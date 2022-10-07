@@ -1,6 +1,6 @@
 {
   "name": "torus-mpc",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "wrapper library for tss settings",
   "main": "dist/torusMpc.cjs.js",
   "module": "dist/torusMpc.esm.js",
@@ -77,5 +77,8 @@
   "engines": {
     "node": ">=14.17.0",
     "npm": ">=6.x"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
