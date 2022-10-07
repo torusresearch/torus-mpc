@@ -179,7 +179,9 @@ export async function generatePrecompute() {
   clients.push({ client, allocated: false });
 }
 
-export async function tssSign(msgHash: Buffer) {
+export async function tssSign(msgHash: Buffer, rawMsg?: Buffer) {
+  // eslint-disable-next-line no-console
+  console.log("what is rawMsg", rawMsg);
   generatePrecompute();
   // const finalHash = `0x${msgHash.toString("hex")}`;
   let foundClient = null as any;
