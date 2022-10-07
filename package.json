@@ -1,22 +1,81 @@
 {
   "name": "torus-mpc",
   "version": "0.0.3",
-  "description": "",
-  "main": "index.ts",
+  "description": "wrapper library for tss settings",
+  "main": "dist/torusMpc.cjs.js",
+  "module": "dist/torusMpc.esm.js",
+  "unpkg": "dist/torusMpc.umd.min.js",
+  "jsdelivr": "dist/torusMpc.umd.min.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "torus-scripts build",
+    "start": "torus-scripts start",
+    "release": "torus-scripts release",
+    "lint:ts": "eslint --fix 'src/**/*.ts'",
+    "prepack": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "@babel/runtime": "^7.x"
+  },
   "dependencies": {
-    "@ethereumjs/util": "^8.0.0",
     "@toruslabs/http-helpers": "^3.2.0",
     "@toruslabs/openlogin-utils": "^2.1.0",
     "@toruslabs/tss-client": "^0.0.1",
     "@toruslabs/tss-lib": "^0.0.1",
-    "@types/node": "^18.8.3",
     "bn.js": "^5.2.1",
+    "elliptic": "^6.5.4",
     "socket.io-client": "^4.5.2"
+  },
+  "devDependencies": {
+    "@toruslabs/eslint-config-typescript": "1.1.2",
+    "@types/node": "^16",
+    "@types/elliptic": "^6.4.14",
+    "@toruslabs/torus-scripts": "^1.2.2",
+    "@types/bn.js": "^5.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.24.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-mocha": "^10.1.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.3"
+  },
+  "lint-staged": {
+    "!(*d).{js,ts}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ],
+    "*.{json, md}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/torusresearch/torusMpc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/torusresearch/torusMpc/issues"
+  },
+  "homepage": "https://github.com/torusresearch/torusMpc#readme",
+  "engines": {
+    "node": ">=14.17.0",
+    "npm": ">=6.x"
   }
 }
