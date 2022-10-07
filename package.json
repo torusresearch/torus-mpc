@@ -29,8 +29,8 @@
   "dependencies": {
     "@toruslabs/http-helpers": "^3.2.0",
     "@toruslabs/openlogin-utils": "^2.1.0",
-    "@toruslabs/tss-client": "^0.0.1",
-    "@toruslabs/tss-lib": "^0.0.1",
+    "@toruslabs/tss-client": "^0.0.2",
+    "@toruslabs/tss-lib": "^0.0.2",
     "bn.js": "^5.2.1",
     "elliptic": "^6.5.4",
     "socket.io-client": "^4.5.2"
