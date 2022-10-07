@@ -196,7 +196,10 @@ export async function tssSign(msgHash: Buffer) {
   }
   await foundClient.client.ready();
   await tss.default(tssImportURL);
-  let { r, s, recoveryParam } = await foundClient.client.sign(tss as any, Buffer.from(msgHash).toString("base64"), true, "", "keccak256");
+  const { signatures } = await getTSSData();
+  let { r, s, recoveryParam } = await foundClient.client.sign(tss as any, Buffer.from(msgHash).toString("base64"), true, "", "keccak256", {
+    signatures,
+  });
   if (new BN(s.toString("hex"), "hex").gte(ec.curve.n.div(new BN(2).add(new BN(1))))) {
     s = s.neg().umod(ec.curve.n);
     recoveryParam ^= 1;
