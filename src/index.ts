@@ -124,7 +124,7 @@ export async function getPublicKeyFromTSSShare(tssShare: string, signatures: str
   const localIndex = 1;
   const remoteIndex = 0;
   const parties = [0, 1];
-  const pubKeyPoint = ec
+  const pubKeyPoint1 = ec
     .keyFromPublic({ x: sharePubX, y: sharePubY })
     .getPublic()
     .mul(
@@ -132,18 +132,17 @@ export async function getPublicKeyFromTSSShare(tssShare: string, signatures: str
         parties.map((p) => new BN(p + 1)),
         new BN(remoteIndex + 1)
       )
-    )
-    .add(
-      ec
-        .keyFromPrivate(Buffer.from(parsedTSSShare.share.padStart(64, "0"), "hex"))
-        .getPublic()
-        .mul(
-          getLagrangeCoeff(
-            parties.map((p) => new BN(p + 1)),
-            new BN(localIndex + 1)
-          )
-        )
     );
+  const pubKeyPoint2 = ec
+    .keyFromPrivate(Buffer.from(parsedTSSShare.share.padStart(64, "0"), "hex"))
+    .getPublic()
+    .mul(
+      getLagrangeCoeff(
+        parties.map((p) => new BN(p + 1)),
+        new BN(localIndex + 1)
+      )
+    );
+  const pubKeyPoint = pubKeyPoint1.add(pubKeyPoint2);
   const pubKeyX = pubKeyPoint.getX().toString(16, 64);
   const pubKeyY = pubKeyPoint.getY().toString(16, 64);
   const pubKeyHex = `${pubKeyX}${pubKeyY}`;
