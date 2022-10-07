@@ -1,6 +1,6 @@
 {
   "name": "torus-mpc",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "wrapper library for tss settings",
   "main": "dist/torusMpc.cjs.js",
   "module": "dist/torusMpc.esm.js",
