@@ -8,7 +8,7 @@ import { ec as EC } from "elliptic";
 import { io, Socket } from "socket.io-client";
 const ec = new EC("secp256k1");
 
-const tssServerEndpoint = "https://load-test-1.k8.authnetwork.dev/tss";
+const tssServerEndpoint = "https://mpcmain-cluster-1.k8.authnetwork.dev/tss";
 
 const tssImportURL = "https://scripts.toruswallet.io/tss-lib.wasm";
 
